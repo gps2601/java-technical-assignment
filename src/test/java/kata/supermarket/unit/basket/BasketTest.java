@@ -1,5 +1,7 @@
-package kata.supermarket;
+package kata.supermarket.unit.basket;
 
+import kata.supermarket.basket.Basket;
+import kata.supermarket.pricing.Teller;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;

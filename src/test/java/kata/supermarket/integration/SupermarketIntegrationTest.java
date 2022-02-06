@@ -1,10 +1,10 @@
 package kata.supermarket.integration;
 
-import kata.supermarket.Basket;
-import kata.supermarket.Item;
-import kata.supermarket.Product;
-import kata.supermarket.SupermarketTeller;
-import kata.supermarket.WeighedProduct;
+import kata.supermarket.basket.Basket;
+import kata.supermarket.pricing.SupermarketTeller;
+import kata.supermarket.product.Item;
+import kata.supermarket.product.Product;
+import kata.supermarket.product.WeighedProduct;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
