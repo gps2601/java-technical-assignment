@@ -1,5 +1,10 @@
-package kata.supermarket;
+package kata.supermarket.integration;
 
+import kata.supermarket.Basket;
+import kata.supermarket.Item;
+import kata.supermarket.Product;
+import kata.supermarket.Teller;
+import kata.supermarket.WeighedProduct;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -13,7 +18,7 @@ import static java.util.Collections.emptyList;
 import static java.util.Collections.singleton;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class BasketTest {
+class SupermarketIntegrationTest {
 
     @DisplayName("basket provides its total value when containing:")
     @MethodSource

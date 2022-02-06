@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
 
-class Teller {
+public class Teller {
 
     public BigDecimal calculate(List<Item> items) {
         return subtotal(items).subtract(discounts());
