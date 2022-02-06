@@ -1,16 +1,18 @@
 package kata.supermarket;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+
+import static java.util.Collections.unmodifiableList;
 
 public class Basket {
     private final List<Item> items;
+    private final TotalCalculator totalCalculator;
 
     public Basket() {
         this.items = new ArrayList<>();
+        totalCalculator = new TotalCalculator(this);
     }
 
     public void add(final Item item) {
@@ -18,33 +20,11 @@ public class Basket {
     }
 
     List<Item> items() {
-        return Collections.unmodifiableList(items);
+        return unmodifiableList(items);
     }
 
     public BigDecimal total() {
-        return new TotalCalculator().calculate();
+        return totalCalculator.calculate();
     }
 
-    private class TotalCalculator {
-        private final List<Item> items;
-
-        TotalCalculator() {
-            this.items = items();
-        }
-
-        private BigDecimal subtotal() {
-            return items.stream().map(Item::price)
-                    .reduce(BigDecimal::add)
-                    .orElse(BigDecimal.ZERO)
-                    .setScale(2, RoundingMode.HALF_UP);
-        }
-
-        private BigDecimal discounts() {
-            return BigDecimal.ZERO;
-        }
-
-        private BigDecimal calculate() {
-            return subtotal().subtract(discounts());
-        }
-    }
 }
