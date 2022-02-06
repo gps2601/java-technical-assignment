@@ -3,7 +3,7 @@ package kata.supermarket.integration;
 import kata.supermarket.Basket;
 import kata.supermarket.Item;
 import kata.supermarket.Product;
-import kata.supermarket.Teller;
+import kata.supermarket.SupermarketTeller;
 import kata.supermarket.WeighedProduct;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -25,7 +25,7 @@ class SupermarketIntegrationTest {
     @ParameterizedTest(name = "{0}")
     void basketProvidesTotalValue(@SuppressWarnings("unused") String description, String expectedTotal, Iterable<Item> items) {
         BigDecimal expected = new BigDecimal(expectedTotal);
-        final Basket basket = new Basket(new Teller());
+        final Basket basket = new Basket(new SupermarketTeller());
         items.forEach(basket::add);
 
         BigDecimal actual = basket.total();
