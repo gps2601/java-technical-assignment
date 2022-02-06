@@ -55,6 +55,23 @@ class SupermarketIntegrationTest {
         assertEquals(expected, basket.total());
     }
 
+    @Test
+    void shouldHandleBuyOneGetOneFreeDiscountsForThreeItems() {
+        BigDecimal expected = new BigDecimal("2.00");
+        SupermarketDiscounter discounter = new SupermarketDiscounter();
+        discounter.addDiscount(COOKIES, new BuyOneGetOneFree());
+        SupermarketTeller teller = new SupermarketTeller(discounter);
+        Basket basket = new Basket(teller);
+        List<Item> items = asList(
+                unitItem("1.00", COOKIES),
+                unitItem("1.00", COOKIES),
+                unitItem("1.00", COOKIES));
+
+        items.forEach(basket::add);
+
+        assertEquals(expected, basket.total());
+    }
+
     @SuppressWarnings("unused")
     static Stream<Arguments> basketProvidesTotalValue() {
         return Stream.of(
