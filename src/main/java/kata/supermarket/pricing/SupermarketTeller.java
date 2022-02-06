@@ -1,5 +1,6 @@
 package kata.supermarket.pricing;
 
+import kata.supermarket.pricing.discounting.Discounter;
 import kata.supermarket.product.Item;
 
 import java.math.BigDecimal;

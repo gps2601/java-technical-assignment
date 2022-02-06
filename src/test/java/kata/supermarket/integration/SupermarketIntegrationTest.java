@@ -1,8 +1,8 @@
 package kata.supermarket.integration;
 
 import kata.supermarket.basket.Basket;
-import kata.supermarket.pricing.BuyOneGetOneFree;
-import kata.supermarket.pricing.SupermarketDiscounter;
+import kata.supermarket.pricing.discounting.BuyOneGetOneFree;
+import kata.supermarket.pricing.discounting.SupermarketDiscounter;
 import kata.supermarket.pricing.SupermarketTeller;
 import kata.supermarket.product.Item;
 import kata.supermarket.product.Product;

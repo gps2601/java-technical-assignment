@@ -1,4 +1,4 @@
-package kata.supermarket.pricing;
+package kata.supermarket.pricing.discounting;
 
 import kata.supermarket.product.Item;
 
