@@ -6,11 +6,11 @@ import java.util.List;
 
 public class Basket {
     private final List<Item> items;
-    private final TotalCalculator totalCalculator;
+    private final Teller teller;
 
     public Basket() {
         this.items = new ArrayList<>();
-        totalCalculator = new TotalCalculator();
+        teller = new Teller();
     }
 
     public void add(final Item item) {
@@ -18,6 +18,6 @@ public class Basket {
     }
 
     public BigDecimal total() {
-        return totalCalculator.calculate(items);
+        return teller.calculate(items);
     }
 }
