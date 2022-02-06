@@ -13,6 +13,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.math.BigDecimal;
 import java.util.stream.Stream;
 
+import static java.math.BigDecimal.ZERO;
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
 import static java.util.Collections.singleton;
@@ -25,7 +26,7 @@ class SupermarketIntegrationTest {
     @ParameterizedTest(name = "{0}")
     void basketProvidesTotalValue(@SuppressWarnings("unused") String description, String expectedTotal, Iterable<Item> items) {
         BigDecimal expected = new BigDecimal(expectedTotal);
-        final Basket basket = new Basket(new SupermarketTeller());
+        final Basket basket = new Basket(new SupermarketTeller(itemsToDiscount -> ZERO));
         items.forEach(basket::add);
 
         BigDecimal actual = basket.total();

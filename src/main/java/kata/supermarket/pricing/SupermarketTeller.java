@@ -7,10 +7,15 @@ import java.math.RoundingMode;
 import java.util.List;
 
 public class SupermarketTeller implements Teller {
+    private final Discounter discounter;
+
+    public SupermarketTeller(Discounter discounter) {
+        this.discounter = discounter;
+    }
 
     @Override
     public BigDecimal calculate(List<Item> items) {
-        return subtotal(items).subtract(discounts());
+        return subtotal(items).subtract(discounter.calculateDiscounts(items));
     }
 
     private BigDecimal subtotal(List<Item> items) {
@@ -18,9 +23,5 @@ public class SupermarketTeller implements Teller {
                 .reduce(BigDecimal::add)
                 .orElse(BigDecimal.ZERO)
                 .setScale(2, RoundingMode.HALF_UP);
-    }
-
-    private BigDecimal discounts() {
-        return BigDecimal.ZERO;
     }
 }

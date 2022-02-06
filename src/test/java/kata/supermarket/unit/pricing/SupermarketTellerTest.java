@@ -7,13 +7,14 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
+import static java.math.BigDecimal.ZERO;
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
 import static java.util.Collections.singletonList;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SupermarketTellerTest {
-    private final SupermarketTeller supermarketTeller = new SupermarketTeller();
+    private final SupermarketTeller supermarketTeller = new SupermarketTeller(items -> ZERO);
 
     @Test
     void shouldHandleEmptyList() {
@@ -38,7 +39,7 @@ class SupermarketTellerTest {
     void shouldHandleMultipleItems() {
         BigDecimal expected = new BigDecimal("2.00");
         Item item1 = new Product(new BigDecimal("1.01")).oneOf();
-        Item item2 =  new Product(new BigDecimal(".99")).oneOf();
+        Item item2 = new Product(new BigDecimal(".99")).oneOf();
 
         BigDecimal actual = supermarketTeller.calculate(asList(item1, item2));
 
