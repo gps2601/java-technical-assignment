@@ -10,7 +10,10 @@ class ProductTest {
 
     @Test
     void singleItemHasExpectedUnitPriceFromProduct() {
-        final BigDecimal price = new BigDecimal("2.49");
-        assertEquals(price, new Product(price).oneOf().price());
+        final BigDecimal expectedPrice = new BigDecimal("2.49");
+
+        BigDecimal actualPrice = new Product(expectedPrice).oneOf().price();
+
+        assertEquals(expectedPrice, actualPrice);
     }
 }

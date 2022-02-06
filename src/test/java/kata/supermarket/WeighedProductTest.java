@@ -14,11 +14,16 @@ class WeighedProductTest {
     @ParameterizedTest
     @MethodSource
     void itemFromWeighedProductHasExpectedUnitPrice(String pricePerKilo, String weightInKilos, String expectedPrice) {
+        BigDecimal expected = new BigDecimal(expectedPrice);
         final WeighedProduct weighedProduct = new WeighedProduct(new BigDecimal(pricePerKilo));
         final Item weighedItem = weighedProduct.weighing(new BigDecimal(weightInKilos));
-        assertEquals(new BigDecimal(expectedPrice), weighedItem.price());
+
+        BigDecimal actual = weighedItem.price();
+
+        assertEquals(expected, actual);
     }
 
+    @SuppressWarnings("unused")
     static Stream<Arguments> itemFromWeighedProductHasExpectedUnitPrice() {
         return Stream.of(
                 Arguments.of("100.00", "1.00", "100.00"),
