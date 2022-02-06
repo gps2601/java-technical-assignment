@@ -1,5 +1,7 @@
-package kata.supermarket.pricing;
+package kata.supermarket.unit.pricing;
 
+import kata.supermarket.pricing.Discount;
+import kata.supermarket.pricing.SupermarketDiscounter;
 import kata.supermarket.product.Item;
 import kata.supermarket.product.Product;
 import org.junit.jupiter.api.Test;
