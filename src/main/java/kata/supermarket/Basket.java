@@ -8,9 +8,9 @@ public class Basket {
     private final List<Item> items;
     private final Teller teller;
 
-    public Basket() {
+    public Basket(Teller teller) {
         this.items = new ArrayList<>();
-        teller = new Teller();
+        this.teller = teller;
     }
 
     public void add(final Item item) {

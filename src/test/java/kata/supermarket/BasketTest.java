@@ -20,7 +20,7 @@ class BasketTest {
     @ParameterizedTest(name = "{0}")
     void basketProvidesTotalValue(@SuppressWarnings("unused") String description, String expectedTotal, Iterable<Item> items) {
         BigDecimal expected = new BigDecimal(expectedTotal);
-        final Basket basket = new Basket();
+        final Basket basket = new Basket(new Teller());
         items.forEach(basket::add);
 
         BigDecimal actual = basket.total();
