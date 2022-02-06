@@ -45,4 +45,15 @@ class SupermarketTellerTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    void shouldDeductDiscountsCalculatedByDiscounter() {
+        BigDecimal expected = new BigDecimal("1.00");
+        SupermarketTeller supermarketTeller = new SupermarketTeller(items -> new BigDecimal(".50"));
+        Item item = new Product(new BigDecimal("1.50")).oneOf();
+
+        BigDecimal actual = supermarketTeller.calculate(singletonList(item));
+
+        assertEquals(expected, actual);
+    }
 }
