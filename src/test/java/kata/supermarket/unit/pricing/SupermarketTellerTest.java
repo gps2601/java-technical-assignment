@@ -1,6 +1,8 @@
-package kata.supermarket.pricing;
+package kata.supermarket.unit.pricing;
 
+import kata.supermarket.pricing.SupermarketTeller;
 import kata.supermarket.product.Item;
+import kata.supermarket.product.Product;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -25,7 +27,7 @@ class SupermarketTellerTest {
     @Test
     void shouldHandleSingleItems() {
         BigDecimal expected = new BigDecimal("1.01");
-        Item item = () -> new BigDecimal("1.01");
+        Item item = new Product(expected).oneOf();
 
         BigDecimal actual = supermarketTeller.calculate(singletonList(item));
 
@@ -35,8 +37,8 @@ class SupermarketTellerTest {
     @Test
     void shouldHandleMultipleItems() {
         BigDecimal expected = new BigDecimal("2.00");
-        Item item1 = () -> new BigDecimal("1.01");
-        Item item2 = () -> new BigDecimal(".99");
+        Item item1 = new Product(new BigDecimal("1.01")).oneOf();
+        Item item2 =  new Product(new BigDecimal(".99")).oneOf();
 
         BigDecimal actual = supermarketTeller.calculate(asList(item1, item2));
 
